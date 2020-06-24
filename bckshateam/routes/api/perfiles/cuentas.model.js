@@ -13,8 +13,8 @@ module.exports = class {
     if(!cuentasColl) {
       let _db = await db.getDB();
       //console.log(_db);
-      cuentasColl = await _db.collection('alumnos');
-      console.log("Coleccion de Alumnos asignados");
+      cuentasColl = await _db.collection('perfiles');
+      console.log("Coleccion de Perfiles asignados");
       return;
     }else{
       return;
@@ -36,8 +36,8 @@ module.exports = class {
 
   static async addOne( cuenta, nombre ) {
     try{
-      const newAlumno = {cuenta:cuenta, nombre:nombre};
-      const result = await cuentasColl.insertOne(newAlumno);
+      const newPerfil = {cuenta:cuenta, nombre:nombre};
+      const result = await cuentasColl.insertOne(newPerfil);
       return result;
     }catch(err){
       console.log(err);

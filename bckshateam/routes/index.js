@@ -1,12 +1,10 @@
-var express= require('express');
+var express = require('express');
 var router = express.Router();
 
-var secRoutes = require('./sec');
-var mocionRoutes = require('./mocion');
-var alumnosRoutes = require('./alumnos');
 
-router.use("/sec", secRoutes);
-router.use("/mocion", mocionRoutes);
-router.use("/alumnos", alumnosRoutes);
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 module.exports = router;

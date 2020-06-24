@@ -9,8 +9,8 @@ init();
 
 router.get('/', async (req, res)=>{
   try {
-    let alumnos = await model.getAll();
-    res.status(200).json(alumnos);
+    let perfiles = await model.getAll();
+    res.status(200).json(perfiles);
   } catch (err) {
     console.log(err);
     res.status(500).json({"Error":"Algo Sucedio Mal intentar de nuevo."});
