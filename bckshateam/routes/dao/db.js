@@ -1,4 +1,4 @@
-let mongoClient = require('mongodb').MongoClient;
+let mongoClient = require('MongoDB').MongoClient;
 
 let _db;
 
@@ -10,7 +10,7 @@ module.exports = class {
     } else {
       try {
         let client = await mongoClient.connect(process.env.MONGODBURI, { useNewUrlParser: true, useUnifiedTopology: true });
-        _db = client.db(process.env.MONGODBDBNAME);
+        _db = client.db(process.env.MONGODBNAME);
         return _db;
       }catch(e){
         console.log(e);

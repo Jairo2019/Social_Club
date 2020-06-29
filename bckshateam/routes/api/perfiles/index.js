@@ -1,6 +1,7 @@
+//Rutas de la entidad Perfiles
 const express = require('express');
 let router = express.Router();
-const model = require('./cuentas.model');
+const model = require('./perfiles.model');
 
 const init = async ()=>{
     await model.initModel();
@@ -28,26 +29,26 @@ router.get('/one/:id', async (req, res)=>{
   }
 }); //get one
 
-router.get('/cuenta/:cuenta', async (req, res) => {
+router.get('/nombre_usuario/:nombre_usuario', async (req, res) => {
   try {
-    let { cuenta } = req.params;
-    let rcuenta = await model.getByCuenta(cuenta);
-    res.status(200).json(rcuenta);
+    let { nombre_usuario } = req.params;
+    let rnombre_usuario = await model.getByCuenta(nombre_usuario);
+    res.status(200).json(rnombre_usuario);
   } catch (err) {
     console.log(err);
     res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
   }
 }); //get one
 
-router.post('/new', async (req, res)=>{
-  try {
-    let {cuenta, nombre } = req.body;
-    const rslt = await model.addOne(cuenta, nombre);
-    res.status(200).json(rslt);
-  } catch(err){
+router.put('/support/:id', async (req, res)=>{
+  try{
+    let { id } = req.params;
+    const rlst = await model.like(id);
+    res.status(200).json(rlst);
+  }catch(err){
     console.log(err);
     res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
   }
-});// post /new
+});//put/support
 
 module.exports = router;
