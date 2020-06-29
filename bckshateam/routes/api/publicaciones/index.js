@@ -16,7 +16,7 @@ router.get('/all', async (req, res)=>{
     console.log(err);
     res.status(500).json({"Error":"Algo Sucedio Mal intentar de nuevo."});
   }
-}); // get /
+}); // get /all
 
 router.get('/one/:id', async (req, res)=>{
   try{
@@ -42,9 +42,16 @@ router.post('/new', async (req, res)=>{
 });// post /new
 
 router.put('/support/:id', async (req, res)=>{
-  res.status(403).json({"msg":"No Implementado"})
-});//put/ support
-
+  try{
+    let { id} = req.params;
+    let{titulo, descripcion, image, video}= req.body;
+    const rlst = await model.support(id,titulo, descripcion, image, video);
+    res.status(200).json(rlst);
+  }catch(err){
+    console.log(err);
+    res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
+  }
+});//put/support
 
 
 router.delete ('/one/:id', async (req, res)=>{

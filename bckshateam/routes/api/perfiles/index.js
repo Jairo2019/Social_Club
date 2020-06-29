@@ -51,5 +51,14 @@ router.put('/support/:id', async (req, res)=>{
     res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
   }
 });//put/support
-
+router.delete ('/del/:id', async (req, res)=>{
+  try {
+      const {id} = req.params;
+      const result = await model.deleteOne(id);
+      res.status(200).json(result);
+  }catch(err){
+    console.log(err);
+    res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
+  }
+});
 module.exports = router;

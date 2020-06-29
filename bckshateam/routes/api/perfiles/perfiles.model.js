@@ -68,4 +68,14 @@ module.exports = class {
       return err;
     }
   }
+  static async deleteOne(id){
+    try{
+      let filter = {"_id": new ObjectId(id)};
+      const result = await perfilesColl.deleteOne(filter);
+      return result;
+    }catch(err){
+      console.log(err);
+      return err;
+    }
+  }
 } //class

@@ -8,7 +8,7 @@ const init = async ()=>{
 }
 init();
 router.post('/login', async (req, res)=>{
-  res.status(403).json({"msg":"No Implementado"})
+    return res.status(403).json({ "msg": "Ruta No Implementada" });
 });// post /login
 router.post('/signin', async (req, res)=>{
   try {

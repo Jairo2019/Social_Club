@@ -66,30 +66,18 @@ module.exports = class {
       return err;
     }
   } //get by titulo
-
-  static async like(id) {
+  static async support(id,titulo, descripcion, image, video) {
     try {
       let filter = {"_id": new ObjectId(id)};
-      let update = {"$inc":{"like":1}, "$set":{"last_modified": new Date().getTime()}};
+      let update = { "$set":{"titulo":titulo, "descripcion":descripcion, "image":image, "video":video}};
       const result = await publicacionColl.updateOne(filter,update);
       return result;
     }catch(err){
       console.log(err);
       return err;
     }
-  }
+  }//update publicacion
 
-  static async dislike(id) {
-    try {
-      let filter = { "_id": new ObjectId(id) };
-      let update = { "$inc": { "dislike": 1 }, "$set": { "last_modified": new Date().getTime() } };
-      const result = await publicacionColl.updateOne(filter, update);
-      return result;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  } //dislike
 
   static async deleteOne(id){
     try{
@@ -102,27 +90,5 @@ module.exports = class {
     }
   }
 
-  static async getWarningpublicaciones(){
-    try { 
-      let filter = {"dislike": {"$gt":3}};
-      const cursor = await publicacionColl.find(filter);
-      const arrpublicacion = await cursor.toArray();
-      return arrpublicacion;
-    } catch (err){
-      console.log(err);
-      return err;
-    }
-
-  }
-
-  /*
-  $lt
-  $lte
-  $gt
-  $gte
-  $ne
-  $or
-
-  */ 
 
 } //class

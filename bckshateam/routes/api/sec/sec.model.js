@@ -1,6 +1,7 @@
 // Primero obtenemos la clase de la base de datos. (Singleton)
 const db = require('../../dao/db');
 const ObjectId = require('mongodb').ObjectId;
+//var bcrypt = require('bcrypt');
 
 // Definimos Variables que contendran punteros hacia las colecciones
 let perfilesColl; // VB Variable Globales | Cloujure
@@ -31,4 +32,21 @@ module.exports = class {
       return err;
     }
   }
+  static comparePswd = (hash, raw)=>{
+    return bcrypt.compareSync(raw, hash);
+  }
+  static getByEmail = (email, handler)=>{
+    var query = {"email":email};
+    var validation = { "email": 1, "pswd": 1, "nombre_usuario":1};
+    perfilesColl.findOne(
+      query,
+      {"validation":validation},
+      (err, user)=>{
+        if(err){
+          return handler(err,null);
+        }
+        return handler(null, user);
+      }
+    )
+  } 
 }
