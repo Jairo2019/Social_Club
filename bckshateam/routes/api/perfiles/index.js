@@ -42,8 +42,9 @@ router.get('/nombre_usuario/:nombre_usuario', async (req, res) => {
 
 router.put('/support/:id', async (req, res)=>{
   try{
-    let { id } = req.params;
-    const rlst = await model.like(id);
+    let { id} = req.params;
+    let{nombre_usuario, email, pswd}= req.body;
+    const rlst = await model.support(id,nombre_usuario, email, pswd);
     res.status(200).json(rlst);
   }catch(err){
     console.log(err);

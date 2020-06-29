@@ -34,16 +34,7 @@ module.exports = class {
     }
   }
 
-  static async addOne(email, pswd, image, edad, nombre_usuario, sexo) {
-    try{
-      const newPerfil = {email:email, pswd:pswd, image:image, edad:edad, nombre_usuario:nombre_usuario, sexo: sexo};
-      const result = await perfilesColl.insertOne(newPerfil);
-      return result;
-    }catch(err){
-      console.log(err);
-      return err;
-    }
-  }
+
   static async getOne(id) {
     try {
       let filter = { "_id": new ObjectId(id)};
@@ -66,10 +57,10 @@ module.exports = class {
     }
   }
 
-  static async support(id) {
+  static async support(id,nombre_usuario, email, pswd) {
     try {
       let filter = {"_id": new ObjectId(id)};
-      let update = {"$inc":{"like":1}, "$set":{"last_modified": new Date().getTime()}};
+      let update = { "$set":{"nombre_usuario":nombre_usuario, "email":email, "pswd":pswd}};
       const result = await perfilesColl.updateOne(filter,update);
       return result;
     }catch(err){

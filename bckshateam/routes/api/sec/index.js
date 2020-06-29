@@ -7,7 +7,9 @@ const init = async ()=>{
     await model.initModel();
 }
 init();
-
+router.post('/login', async (req, res)=>{
+  res.status(403).json({"msg":"No Implementado"})
+});// post /login
 router.post('/signin', async (req, res)=>{
   try {
     let {email, pswd, image, edad, nombre_usuario, sexo} = req.body;
@@ -17,6 +19,6 @@ router.post('/signin', async (req, res)=>{
     console.log(err);
     res.status(500).json({ "Error": "Algo Sucedio Mal intentar de nuevo." });
   }
-});// post /new
+});// post /signin
 
 module.exports = router;
