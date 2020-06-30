@@ -172,6 +172,33 @@
 				"description": "login"
 			},
 			"response": []
+		},
+		{
+			"name": "{{Host}}/api/publicaciones/one/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/publicaciones/one/:id",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"publicaciones",
+						"one",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5efa6e89cce6e735404008aa"
+						}
+					]
+				},
+				"description": "eliminar una Publicacion"
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
