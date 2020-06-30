@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "7e5e779a-68da-4b13-9665-e7b87bb0d73e",
+		"name": "ShaTeam",
+		"description": "Club Social (Social Club)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{Host}}/api/perfiles/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/perfiles/",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"perfiles",
+						""
+					]
+				},
+				"description": "obtener todos los Perfiles"
+			},
+			"response": []
+		},
+		{
+			"name": "{{Host}}/api/sec/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cuenta",
+							"value": "150031998",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "ShaTeam",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/perfiles/new",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"perfiles",
+						"new"
+					]
+				},
+				"description": "agregar un usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "{{Host}}/api/publicaciones/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "titulo",
+							"value": "Ciencia",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "sckmvlksdf",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "31225\n2\n",
+							"type": "text"
+						},
+						{
+							"key": "video",
+							"value": "53453",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/publicaciones/new",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"publicaciones",
+						"new"
+					]
+				},
+				"description": "registrar una publicación"
+			},
+			"response": []
+		},
+		{
+			"name": "{{Host}}/api/publicaciones/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/publicaciones/all",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"publicaciones",
+						"all"
+					]
+				},
+				"description": "obtener todas las publicaciones"
+			},
+			"response": []
+		},
+		{
+			"name": "{{Host}}/api/publicaciones/one/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/publicaciones/one/:id",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"publicaciones",
+						"one",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5efa6e89cce6e735404008aa"
+						}
+					]
+				},
+				"description": "Obtener una publicació a través del Id"
+			},
+			"response": []
+		},
+		{
+			"name": "{{Host}}/api/sec/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/sec/login",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"sec",
+						"login"
+					]
+				},
+				"description": "login"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
