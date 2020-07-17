@@ -1,0 +1,30 @@
+footer {
+  display: flex;
+  background-color: #1976D2;
+  color: #fff;
+  position: fixed;
+  left:0px;
+  bottom: 0px;
+}
+footer nav ul {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  list-style: none;
+  justify-content:center;
+  align-items: center;
+}
+footer nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+
+footer nav ul li a {
+  display: inline-block;
+  padding:1em;
+  color:#fff;
+  text-decoration: none;
+}

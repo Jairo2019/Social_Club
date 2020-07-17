@@ -1,0 +1,23 @@
+/* fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  border: none;
+} */
+
+fieldset button {
+  display: flex;
+  margin: 1.5em auto;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.7em;
+  background-color: #448AFF;
+  color:#fff;
+  text-shadow: 0px 0px 1px #212121;
+  box-shadow: 1px 1px 5px #212121;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
