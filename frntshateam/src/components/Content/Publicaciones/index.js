@@ -5,6 +5,7 @@ import {NavLinkBtn} from '../../Button';
 import './publicaciones.css';
 
 import Publicaciones from './Publicaciones';
+
 export default class extends Component {
   constructor(){
     super();
@@ -27,17 +28,32 @@ export default class extends Component {
       <Page
         title="Publicaciones"
         showHeader={true}
-        showFooter={false}
+        showFooter={true}
       >
-        <Publicaciones rsmHandler={this.addToCounter} title="Ingreso por Medio de RFID"></Publicaciones>
-        <Publicaciones rsmHandler={this.addToCounter} title="Modernización de Parque"></Publicaciones>
-        <Publicaciones rsmHandler={this.addToCounter}  title="Ampliación de Opciones de Pagos para Cuota"></Publicaciones>
-        <section>
-         <p>Si: {this.state.countSi}</p>
-         <p>No: {this.state.countNo}</p>
-         <p>Abstener: {this.state.countAbstener}</p>
-        </section>
-        <NavLinkBtn toLink="/" className="btnBack">Regresar</NavLinkBtn>
+       
+      <section class="publicacion">
+      <form>
+        <label htmlFor="name">Titulo: </label>
+        <div>
+        <input id="name" type="text" value={this.state.name} onChange={this.handleChange} />
+        </div>
+        <div>
+        <label htmlFor="name">Descripcion: </label>
+        </div>
+        <div>
+        <textarea tabindex="1" class="mainInput" id="tcm-post-content" name="tcm-post-content" placeholder="Escribe tu descripcion..."></textarea>
+        </div>
+      </form>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Subir Archivo:
+          <input type="file" ref={this.fileInput} />
+        </label>
+        <br />
+        <NavLinkBtn toLink="/" className="btnBack" type="sumbit">Enviar</NavLinkBtn>
+      </form>
+      </section>
+      
       </Page>
     );
   }
