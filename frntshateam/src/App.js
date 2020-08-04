@@ -1,24 +1,133 @@
-import React from 'react';
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import logo from './logo.svg';
-import './App.css';
+import Nav from "./Components/Nav";
+import Loading from "./Components/Loading";
+import Error from "./Components/Error";
 
-import Home from './components/Content/Home';
-import SignIn from './components/Content/SignIn';
-import Publicaciones from './components/Content/Publicaciones';
+import Main from "./Components/Main";
+import Signup from "./Home/SignIn";
+import Login from "./Home/Login";
+import Upload from "./Home/Upload";
+import Feed from "./Home/Feed";
+import Post from "./Home/Post";
+import Explore from "./Home/Explore";
+import Perfil from "./Home/Perfil";
+import ContactForm from "./Home/contactForm";
+import { initAxiosInterceptors } from "./Components/actions/auth-helpers";
+import { UsuarioProvider, useUsuario } from "./Components/actions-user/usuario-context";
+
+initAxiosInterceptors();
+
+export default () => (
+	<UsuarioProvider>
+		<App></App>
+	</UsuarioProvider>
+);
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/Publicaciones" component={Publicaciones} exact />
-          <Route path="/signin" component={SignIn} exact />
-      </Switch>
-    </Router>
-    
-  );
+	const { cargandoUsuario, usuario, login, signup, logout } = useUsuario();
+	const [error, setError] = useState(null);
+
+	function mostrarError(mensaje) {
+		setError(mensaje);
+	}
+
+	function esconderError() {
+		setError(null);
+	}
+
+	if (cargandoUsuario) {
+		return (
+			<Main center>
+				<Loading />
+			</Main>
+		);
+	}
+
+	return (
+		<Router>
+			<Nav usuario={usuario} />
+			<Error mensaje={error} esconderError={esconderError} />
+			{usuario ? (
+				<LoginRoutes
+					mostrarError={mostrarError}
+					usuario={usuario}
+					logout={logout}
+				/>
+			) : (
+				<LogoutRoutes
+					login={login}
+					signup={signup}
+					mostrarError={mostrarError}
+				/>
+			)}
+		</Router>
+	);
 }
 
-export default App;
+function LoginRoutes({ mostrarError, usuario, logout }) {
+	return (
+		<Switch>
+			<Route
+				path="/upload"
+				render={(props) => <Upload {...props} mostrarError={mostrarError} />}
+			></Route>
+			<Route
+				path="/post/:id"
+				render={(props) => (
+					<Post {...props} mostrarError={mostrarError} usuario={usuario} />
+				)}
+			></Route>
+			<Route
+				path="/explore/"
+				render={(props) => (
+					<Explore {...props} mostrarError={mostrarError} usuario={usuario} />
+				)}
+			></Route>
+			<Route
+				path="/perfil/:username"
+				render={(props) => (
+					<Perfil
+						{...props}
+						mostrarError={mostrarError}
+						usuario={usuario}
+						logout={logout}
+					/>
+				)}
+			></Route>
+			<Route
+				path="/"
+				component={(props) => (
+					<Feed {...props} mostrarError={mostrarError} default />
+				)}
+			></Route>
+		</Switch>
+	);
+}
+
+function LogoutRoutes({ login, signup, mostrarError }) {
+	return (
+		<Switch>
+			<Route
+				path="/login"
+				render={(props) => (
+					<Login {...props} login={login} mostrarError={mostrarError} />
+				)}
+			></Route>
+			<Route
+				path="/ContactForm"
+				render={(props) => (
+					<ContactForm {...props} login={login} mostrarError={mostrarError} />
+				)}
+			></Route>
+			<Route
+				default
+				exact
+				render={(props) => (
+					<Signup {...props} signup={signup} mostrarError={mostrarError} />
+				)}
+			></Route>
+		</Switch>
+	);
+}

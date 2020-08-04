@@ -1,18 +1,34 @@
 {
-  "name": "bckshateam",
-  "version": "0.0.0",
+  "name": "clontagram-servidor",
+  "version": "1.0.0",
+  "main": "index.js",
   "private": true,
+  "author": "Ricardo y Daniel Macario",
+  "license": "ISC",
   "scripts": {
-    "start": "node ./bin/www"
+    "dev": "nodemon index.js",
+    "seed-db": "node scripts/seedDb.js"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "@hapi/joi": "^15.1.1",
+    "aws-sdk": "^2.656.0",
+    "bcrypt": "3.0.6",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "~4.16.1",
-    "hbs": "~4.0.4",
-    "http-errors": "~1.6.3",
-    "mongodb": "^3.5.9",
-    "morgan": "~1.9.1"
+    "express": "^4.17.1",
+    "file-type": "^12.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0",
+    "underscore": "^1.10.2",
+    "uuid": "^3.4.0",
+    "winston": "^2.4.4"
+  },
+  "devDependencies": {
+    "mongo-seeding": "^3.4.0",
+    "nodemon": "^2.0.3"
   }
 }
