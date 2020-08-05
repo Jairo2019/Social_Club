@@ -1,8 +1,6 @@
 {
-  "name": "clontagram-cliente",
   "version": "1.0.0",
   "private": true,
-  "author": "Ricardo y Daniel Macario",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",

@@ -37,7 +37,7 @@ export default function Signup({signup, mostrarError}) {
             <div className="FormContainer">
             <h1 className="Form__titulo">ShaTeam</h1>
             <p className="FormContainer__info">
-                Registrate Para explorar tu Hobbys
+                Registrate Para Explorar Hobbys
             </p>
             <form onSubmit={handleInputSubmit}>
                 <input
